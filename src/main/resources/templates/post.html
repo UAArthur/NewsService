@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="${newsPost.title}"></title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/post.css">
+</head>
+<body>
+<div class="content">
+  <div class="post-wrapper">
+    <div class="post-header">
+      <span class="post-line" th:attr="data-category=${newsPost.category}"></span>
+      <span class="post-category inter-extra-bold" th:text="${newsPost.category}"></span>
+      <span class="post-date" th:text="${#temporals.format(newsPost.date, 'yyyy-MM-dd')}"></span>
+      <span class="post-platform inter-medium" th:text="${newsPost.platform}"></span>
+    </div>
+    <div class="post-body">
+      <span class="post-title" th:text="${newsPost.title}"></span>
+      <span class="post-content" th:text="${newsPost.content}"></span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

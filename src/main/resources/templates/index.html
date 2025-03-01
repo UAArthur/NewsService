@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
+</head>
+<body>
+<div class="content">
+    <!--    Navbar / Switcher for categories-->
+    <div class="categories-container">
+        <div class="categories">
+            <a href="/news" data-category="all" class="inter-semi-bold">All</a>
+            <a href="?category=news" data-category="announcements" class="inter-semi-bold">News</a>
+            <a href="?category=events" data-category="events" class="inter-semi-bold">Events</a>
+            <a href="?category=updates" data-category="updates" class="inter-semi-bold">Updates</a>
+            <a href="?category=shop" data-category="shop" class="inter-semi-bold">Shop</a>
+            <a href="?category=maintenance" data-category="maintenance" class="inter-semi-bold">Maintenance</a>
+        </div>
+
+        <!--        Input field for search-->
+        <div class="search">
+            <label class="search-wrapper">
+                <input type="text" placeholder="Search" class="inter-semi-bold">
+                <span class="material-symbols-outlined search-icon">search</span>
+            </label>
+        </div>
+
+        <!--         In theory this should be loaded from db -->
+        <div class="select-platform">
+            <label class="platform-option">
+                <input type="radio" id="all-platforms" name="platform" value="all-platforms" checked>
+                <span class="inter-semi-bold">All Platforms</span>
+            </label>
+
+            <label class="platform-option">
+                <input type="radio" id="client" name="platform" value="client">
+                <span class="inter-semi-bold">Client</span>
+            </label>
+            <label class="platform-option">
+                <input type="radio" id="server" name="platform" value="server">
+                <span class="inter-semi-bold">Server</span>
+            </label>
+        </div>
+
+        <!--        List of posts-->
+        <div class="posts">
+            <div class="post-wrapper">
+                <!--                <div class="post">-->
+                <!--                    <div class="post-header">-->
+                <!--                        <span class="post-category inter-extra-bold">NEWS</span>-->
+                <!--                        <span class="post-line" data-category="announcements"></span>-->
+                <!--                        <span class="post-platform inter-medium">Client</span>-->
+                <!--                    </div>-->
+                <!--                    <div class="post-content">-->
+                <!--                        <span class="post-title inter-medium">TEST TITLE</span>-->
+                <!--                        <span class="post-date">2021-01-01</span>-->
+                <!--                    </div>-->
+                <!--                </div>-->
+            </div>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+</div>
+</body>
+</html>

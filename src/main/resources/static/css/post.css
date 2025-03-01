@@ -1,0 +1,35 @@
+.content {
+    margin-top: 25dvh;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    min-width: 1200px;
+}
+
+.post-wrapper {
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.post-body {
+    margin-top: 20px;
+}
+
+.post-title {
+    font-size: 35px;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.post-content {
+    display: block;
+    line-height: 1.6;
+}
