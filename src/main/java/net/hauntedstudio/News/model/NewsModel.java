@@ -42,13 +42,6 @@ public class NewsModel {
     // Constructors
     public NewsModel() {}
 
-    public NewsModel(String title, Category category, String platform, String content) {
-        this.title = title;
-        this.category = category;
-        this.platform = platform;
-        this.content = content;
-    }
-
     @Getter
     public enum Category {
         All(0),

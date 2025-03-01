@@ -1,3 +1,14 @@
+import { fetchPostById, fetchLatestPosts } from './api.js';
+
+const categoryMapping = {
+    0: 'ALL',
+    1: 'ANNOUNCEMENTS',
+    2: 'MAINTENANCE',
+    3: 'EVENTS',
+    4: 'UPDATES',
+    5: 'SHOP'
+};
+
 function createPosts(postData) {
     const postsContainer = document.querySelector('.post-wrapper');
     if (!postsContainer) return;
@@ -17,11 +28,11 @@ function createPosts(postData) {
 
         const postCategory = document.createElement('span');
         postCategory.className = 'post-category inter-extra-bold';
-        postCategory.textContent = post.category.toUpperCase();
+        postCategory.textContent = categoryMapping[post.category];
 
         const postLine = document.createElement('span');
         postLine.className = 'post-line';
-        postLine.dataset.category = post.category;
+        postLine.dataset.category = categoryMapping[post.category];
 
         const postPlatform = document.createElement('span');
         postPlatform.className = 'post-platform inter-medium';
@@ -53,35 +64,16 @@ function createPosts(postData) {
     });
 }
 
-
 document.addEventListener('DOMContentLoaded', () => {
-    const categories = ['announcements', 'events', 'updates', 'shop', 'maintenance'];
-    const platforms = ['Client', 'Server'];
-    const categoryMapping = {
-        'news': 'announcements',
-        'events': 'events',
-        'updates': 'updates',
-        'shop': 'shop',
-        'maintenance': 'maintenance'
-    };
-
-    //For testing purposes only
-    const postData = [];
-    for (let i = 0; i < 10; i++) {
-        postData.push({
-            id: `post${i + 1}`,
-            category: categories[i % categories.length],
-            platform: platforms[i % platforms.length],
-            title: `Post Title ${i + 1}`,
-            createdAt: `2021-01-${String(i + 1).padStart(2, '0')}`
-        });
-    }
-    createPosts(postData);
+    fetchLatestPosts().then(postData => {
+        createPosts(postData);
+    });
 
     const urlParams = new URLSearchParams(window.location.search);
-    const category = urlParams.get('category');
-    const currentCategory = (categoryMapping[category] == null ) ? 'all' : categoryMapping[category];
+    const category = urlParams.get('category')?.toUpperCase();
+    const currentCategory = category !== undefined ? category : 'ALL';
     const buttons = document.querySelectorAll('.categories a');
+
     buttons.forEach(button => {
         if (button.dataset.category === currentCategory) {
             button.classList.add('active');
@@ -90,5 +82,3 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-
-

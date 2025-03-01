@@ -81,32 +81,32 @@ html, body {
     color: black;
 }
 
-.categories a.active[data-category="all"]::before {
+.categories a.active[data-category="ALL"]::before {
     background-color: black;
     width: 100%;
 }
 
-.categories a.active[data-category="announcements"]::before {
+.categories a.active[data-category="ANNOUNCEMENTS"]::before {
     background-color: var(--color-announcements);
     width: 100%;
 }
 
-.categories a.active[data-category="events"]::before {
+.categories a.active[data-category="EVENTS"]::before {
     background-color: var(--color-events);
     width: 100%;
 }
 
-.categories a.active[data-category="updates"]::before {
+.categories a.active[data-category="UPDATES"]::before {
     background-color: var(--color-updates);
     width: 100%;
 }
 
-.categories a.active[data-category="shop"]::before {
+.categories a.active[data-category="SHOP"]::before {
     background-color: var(--color-shop);
     width: 100%;
 }
 
-.categories a.active[data-category="maintenance"]::before {
+.categories a.active[data-category="MAINTENANCE"]::before {
     background-color: var(--color-maintenance);
     width: 100%;
 }
