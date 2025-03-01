@@ -320,8 +320,8 @@ html, body {
     background-color: var(--color-default);
 }
 
-.post-line[data-category="announcements"] { background-color: var(--color-announcements); }
-.post-line[data-category="events"] { background-color: var(--color-events); }
-.post-line[data-category="updates"] { background-color: var(--color-updates); }
-.post-line[data-category="shop"] { background-color: var(--color-shop); }
-.post-line[data-category="maintenance"] { background-color: var(--color-maintenance); }
+.post-line[data-category="ANNOUNCEMENTS"] { background-color: var(--color-announcements); }
+.post-line[data-category="EVENTS"] { background-color: var(--color-events); }
+.post-line[data-category="UPDATES"] { background-color: var(--color-updates); }
+.post-line[data-category="SHOP"] { background-color: var(--color-shop); }
+.post-line[data-category="MAINTENANCE"] { background-color: var(--color-maintenance); }
