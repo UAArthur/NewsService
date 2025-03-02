@@ -46,9 +46,9 @@ public class NewsModel {
     public enum Category {
         All(0),
         NEWS(1),
-        MAINTENANCE(2),
-        EVENT(3),
-        UPDATE(4),
+        MAINTENANCES(2),
+        EVENTS(3),
+        UPDATES(4),
         SHOP(5);
 
         private final int value;

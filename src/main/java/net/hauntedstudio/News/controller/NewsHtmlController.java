@@ -18,21 +18,22 @@ public class NewsHtmlController {
         this.newsService = newsService;
     }
 
-
-    // localhost:8085/news -> index.html
-    @RequestMapping({""})
+    // localhost:8086/news -> index.html
+    @RequestMapping({"", "/"})
     public String index() {
         return "index";
     }
 
-    // localhost:8085/news/{id} -> post.html
+
+    // localhost:8086/news/{id} -> post.html
     @RequestMapping("/{id}")
     public String post(@PathVariable String id, Model model) {
+        if (!id.matches("\\d+"))
+            return "error";
         NewsModel newsModel = newsService.findById(Long.parseLong(id));
         NewsPostDTO newsPostDTO = new NewsPostDTO(newsModel.getTitle(), newsModel.getContent(),
                 newsModel.getCategory().name(), newsModel.getCreatedAt(), newsModel.getPlatform());
         model.addAttribute("newsPost", newsPostDTO);
         return "post";
     }
-
 }

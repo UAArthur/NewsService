@@ -17,7 +17,7 @@ function createPosts(postData) {
 
     postData.forEach(post => {
         const link = document.createElement('a');
-        link.href = `news/${post.id}`;
+        link.href = `${post.id}`;
         link.className = 'post-link';
 
         const postElement = document.createElement('div');
