@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -48,7 +49,10 @@ public class NewsController {
             return ResponseEntity.notFound().build();
         }
 
-        List<NewsSummaryDTO> newsSummaryList = newsList.stream()
+        List<NewsModel> modifiableNewsList = new ArrayList<>(newsList);
+        modifiableNewsList.sort((n1, n2) -> Long.compare(n2.getId(), n1.getId()));
+
+        List<NewsSummaryDTO> newsSummaryList = modifiableNewsList.stream()
                 .map(NewsSummaryDTO::new)
                 .toList();
 
