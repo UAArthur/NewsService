@@ -321,6 +321,7 @@ html, body {
 }
 
 .post-line[data-category="ANNOUNCEMENTS"] { background-color: var(--color-announcements); }
+.post-line[data-category="NEWS"] { background-color: var(--color-announcements); }
 .post-line[data-category="EVENTS"] { background-color: var(--color-events); }
 .post-line[data-category="UPDATES"] { background-color: var(--color-updates); }
 .post-line[data-category="SHOP"] { background-color: var(--color-shop); }
