@@ -1,5 +1,6 @@
 package net.hauntedstudio.News.dc;
 
+import lombok.Getter;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.interactions.commands.DefaultMemberPermissions;
@@ -10,13 +11,18 @@ import net.dv8tion.jda.api.requests.restaction.CommandListUpdateAction;
 import net.hauntedstudio.News.dc.commands.CreateNewsChannel_CMD;
 import net.hauntedstudio.News.dc.listener.ForumChannelListener;
 import net.hauntedstudio.News.service.ConfigService;
+import net.hauntedstudio.News.service.NewsService;
 
 public class DCBot {
+    @Getter
     private final ConfigService configService;
+    @Getter
+    private final NewsService newsService;
     public JDA jda;
 
-    public DCBot(ConfigService configService) {
+    public DCBot(ConfigService configService, NewsService newsService) {
         this.configService = configService;
+        this.newsService = newsService;
     }
 
     public void startBot() {
@@ -25,8 +31,8 @@ public class DCBot {
                 String token = configService.getConfig().getAsJsonPrimitive("discordToken").getAsString();
                 jda = JDABuilder.createDefault(token)
                         .enableIntents(GatewayIntent.MESSAGE_CONTENT)
-                        .addEventListeners(new ForumChannelListener())
-                        .addEventListeners(new CreateNewsChannel_CMD(configService)).build();
+                        .addEventListeners(new ForumChannelListener(this))
+                        .addEventListeners(new CreateNewsChannel_CMD(this)).build();
 
                 CommandListUpdateAction commands = jda.updateCommands();
 
@@ -44,4 +50,5 @@ public class DCBot {
             }
         }).start();
     }
+
 }

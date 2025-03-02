@@ -5,6 +5,7 @@ import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.channel.forums.ForumTagData;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import net.hauntedstudio.News.dc.DCBot;
 import net.hauntedstudio.News.service.ConfigService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -14,14 +15,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-@Component
 public class CreateNewsChannel_CMD extends ListenerAdapter {
 
-    private final ConfigService configService;
+    private final DCBot dcBot;
 
-    @Autowired
-    public CreateNewsChannel_CMD(@Lazy ConfigService configService) {
-        this.configService = configService;
+    public CreateNewsChannel_CMD(DCBot dcBot) {
+        this.dcBot = dcBot;
     }
 
     @Override
@@ -49,9 +48,9 @@ public class CreateNewsChannel_CMD extends ListenerAdapter {
                                         .queue();
 
                                 // Set ChannelId in config
-                                JsonObject config = configService.getConfig();
+                                JsonObject config = dcBot.getConfigService().getConfig();
                                 config.addProperty("discordNewsChannelId", forumChannel.getId());
-                                configService.saveConfig(config);
+                                dcBot.getConfigService().saveConfig(config);
                             });
 
                     event.reply("Channel created").queue();

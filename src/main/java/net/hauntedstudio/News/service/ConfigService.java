@@ -6,6 +6,7 @@ import com.google.gson.JsonParser;
 import jakarta.annotation.PostConstruct;
 import net.dv8tion.jda.api.hooks.EventListener;
 import net.hauntedstudio.News.dc.DCBot;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -16,10 +17,11 @@ import java.nio.file.Paths;
 @Service
 public class ConfigService {
     private final File configFile = new File("config.json");
-    private final EventListener eventListener;
 
-    public ConfigService(EventListener eventListener) {
-        this.eventListener = eventListener;
+    private final NewsService newsService;
+
+    public ConfigService(NewsService newsService) {
+        this.newsService = newsService;
     }
 
 
@@ -53,7 +55,7 @@ public class ConfigService {
                 throw new RuntimeException("Discord token is empty");
             }
 
-            DCBot dc = new DCBot(this);
+            DCBot dc = new DCBot(this, newsService);
             dc.startBot();
         }
     }
